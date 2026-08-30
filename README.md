@@ -1,6 +1,6 @@
 # RealCommerce - Katalog Produk Responsif
 
-> 🎓 **Tugas Kuliah**: Proyek pembuatan web Katalog Produk Responsif berbasis **Tailwind CSS v4**.
+> 🎓 **Tugas Kuliah**: Proyek pembuatan web Katalog Produk Responsif berbasis **Tailwind CSS v4**. Live di: https://realcommerce.realitaa.dev
 
 ---
 
@@ -37,7 +37,7 @@ Data produk yang digunakan pada website ini bukan hardcoded secara manual, melai
 Pastikan [Node.js](https://nodejs.org/) dan [pnpm](https://pnpm.io/) telah terpasang di komputer Anda.
 ```bash
 # Clone repository
-git clone <URL_REPOSITORY_ANDA>
+git clone https://github.com/Realitaa/TugasWeb-Pertemuan3-Katalog.git
 cd TugasWeb-Pertemuan3-Katalog
 
 # Install seluruh dependensi
@@ -63,21 +63,6 @@ Buka browser pada alamat `http://localhost:5173`.
 | `pnpm run test` | Menjalankan Unit Testing struktur DOM & utility Tailwind (Vitest) |
 | `pnpm run test:e2e` | Menjalankan E2E testing & screenshot multi-breakpoint (Playwright) |
 | `pnpm run test:all` | Menjalankan seluruh pengujian (Unit Test + E2E Test) |
-
----
-
-## 🌐 Panduan Deployment ke Cloudflare Pages
-
-Karena folder `data/` diabaikan oleh `.gitignore`, gunakan perintah build satu baris berikut pada Cloudflare Pages:
-
-### Pengaturan Build di Cloudflare Pages Dashboard:
-
-| Konfigurasi | Nilai yang Harus Diisi |
-|---|---|
-| **Framework preset** | `None` / `Vite` |
-| **Build command** | `pnpm run build:full` *(atau `pnpm run build` jika data sudah di-commit)* |
-| **Build output directory** | `dist` |
-| **Root directory** | `/` |
 
 ---
 
