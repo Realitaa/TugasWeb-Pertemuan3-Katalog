@@ -1,3 +1,5 @@
 const name = "Reza"
 
-document.getElementById('init-name').textContent = name
+document.querySelectorAll('[init-name]').forEach(el => {
+  el.textContent = name
+})

@@ -14,8 +14,6 @@ export function setupNavbar() {
   const navCollapse = document.getElementById('hs-navbar-example')
   const iconContainer = document.getElementById('navbar-toggle-icon')
   const navList = document.getElementById('navbar-list')
-  const themeToggleBtn = document.getElementById('theme-toggle-btn')
-  const themeToggleIcon = document.getElementById('theme-toggle-icon')
 
   if (iconContainer) {
     iconContainer.innerHTML = menuIcon
@@ -24,8 +22,8 @@ export function setupNavbar() {
   if (navList) {
     navList.innerHTML = navLinks.map(link => {
       const activeClass = link.active 
-        ? 'font-medium text-cyan-700 dark:text-cyan-600 focus:outline-hidden'
-        : 'text-sm text-gray-800 dark:text-gray-200 hover:text-cyan-700 dark:hover:text-cyan-600 focus:outline-hidden focus:text-cyan-700 dark:focus:text-cyan-600'
+        ? 'text-brand focus:outline-hidden'
+        : 'text-sm text-primary hover:text-brand-hover focus:outline-hidden'
       const ariaCurrent = link.active ? 'aria-current="page"' : ''
       return `<li><a class="${activeClass}" href="${link.href}" ${ariaCurrent}>${link.label}</a></li>`
     }).join('')
@@ -45,6 +43,8 @@ export function setupNavbar() {
   }
 
   // Theme switcher: light -> dark -> system -> light
+  const themeToggleBtn = document.getElementById('theme-toggle-btn')
+  const themeToggleIcon = document.getElementById('theme-toggle-icon')
   const themes = ['light', 'dark', 'system']
   let currentThemeIndex = 0
 

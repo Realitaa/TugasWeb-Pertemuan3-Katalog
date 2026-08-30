@@ -3,5 +3,43 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  font-family: 'Google Sans', sans-serif;
+  --canvas: var(--color-lime-50);
+  --surface: var(--color-lime-50);
+  --primary: var(--color-lime-950);
+  --muted: var(--color-lime-800);
+  --brand: var(--color-fuchsia-900);
+  --brand-hover: var(--color-fuchsia-700);
+  --border: var(--color-lime-200);
+  --hover: var(--color-lime-200);
+  --ring: var(--color-lime-300);
+}
+
+.dark {
+  --canvas: var(--color-mauve-900);
+  --surface: var(--color-mauve-900);
+  --primary: var(--color-purple-50);
+  --muted: var(--color-purple-300);
+  --brand: var(--color-fuchsia-300);
+  --brand-hover: var(--color-fuchsia-400);
+  --border: var(--color-purple-800);
+  --hover: var(--color-purple-900);
+  --ring: var(--color-purple-700);
+}
+
+@theme {
+  --font-sans: 'Google Sans', sans-serif;
+
+  /* 85rem / 1360px container max-width */
+  --spacing-340: 85rem;
+
+  /* Semantic Theme Colors */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-border: var(--border);
+  --color-hover: var(--hover);
+  --color-ring: var(--ring);
 }
