@@ -38,14 +38,14 @@ export function setupProducts() {
             ` : ''}
           </div>
           <div class="p-4 flex flex-col flex-1">
-            <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="text-xs font-medium flex items-center gap-1">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-medium inline-flex items-center gap-1 shrink-0 self-center">
                 <i data-lucide="star" class="size-3.5 fill-amber-400 text-amber-400 shrink-0"></i>
                 <span>${product.rating}</span>
               </span>
-              <div class="text-right">
-                ${originalPrice ? `<span class="text-xs text-muted line-through mr-1">${formattedOriginalPrice}</span>` : ''}
-                <span class="text-base font-bold">${formattedPrice}</span>
+              <div class="text-right flex flex-col items-end shrink-0 min-w-0">
+                ${originalPrice ? `<span class="text-xs text-muted line-through whitespace-nowrap leading-tight">${formattedOriginalPrice}</span>` : ''}
+                <span class="text-base font-bold whitespace-nowrap leading-tight">${formattedPrice}</span>
               </div>
             </div>
             <h3 class="font-semibold text-primary line-clamp-1 text-base" title="${product.title}">

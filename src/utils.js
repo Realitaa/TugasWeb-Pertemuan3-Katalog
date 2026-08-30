@@ -35,11 +35,11 @@ export function setStorage(key, value) {
 /**
  * Memformat angka menjadi format mata uang Rupiah (IDR)
  * @param {number|string} amount 
- * @returns {string} Contoh: "Rp 176.783"
+ * @returns {string} Contoh: "Rp 176.783" (dengan non-breaking space agar tidak terpisah)
  */
 export function formatRupiah(amount) {
   if (amount === null || amount === undefined || isNaN(amount)) return ''
-  return `Rp ${Math.round(Number(amount)).toLocaleString('id-ID')}`
+  return `Rp\u00A0${Math.round(Number(amount)).toLocaleString('id-ID')}`
 }
 
 /**
