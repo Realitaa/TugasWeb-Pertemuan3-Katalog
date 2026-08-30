@@ -1,5 +1,3 @@
-const name = "Reza"
+import { initDisplayName } from './utils.js'
 
-document.querySelectorAll('[init-name]').forEach(el => {
-  el.textContent = name
-})
+initDisplayName('Reza')

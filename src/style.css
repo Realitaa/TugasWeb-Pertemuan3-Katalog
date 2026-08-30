@@ -19,8 +19,8 @@
   --surface: var(--color-mauve-900);
   --primary: var(--color-purple-50);
   --muted: var(--color-purple-300);
-  --brand: var(--color-fuchsia-300);
-  --brand-hover: var(--color-fuchsia-400);
+  --brand: var(--color-fuchsia-900);
+  --brand-hover: var(--color-fuchsia-800);
   --border: var(--color-purple-800);
   --hover: var(--color-purple-900);
   --ring: var(--color-purple-700);

@@ -2,6 +2,7 @@ import menuIcon from './assets/menu.svg?raw'
 import sunIcon from './assets/sun.svg?raw'
 import moonIcon from './assets/moon.svg?raw'
 import systemIcon from './assets/system.svg?raw'
+import { getStorage, setStorage } from './utils.js'
 
 export const navLinks = [
   { label: 'Produk', href: '/', active: true },
@@ -22,8 +23,8 @@ export function setupNavbar() {
   if (navList) {
     navList.innerHTML = navLinks.map(link => {
       const activeClass = link.active 
-        ? 'text-brand focus:outline-hidden'
-        : 'text-sm text-primary hover:text-brand-hover focus:outline-hidden'
+        ? 'focus:outline-hidden'
+        : 'text-sm text-muted hover:text-brand-hover focus:outline-hidden'
       const ariaCurrent = link.active ? 'aria-current="page"' : ''
       return `<li><a class="${activeClass}" href="${link.href}" ${ariaCurrent}>${link.label}</a></li>`
     }).join('')
@@ -46,14 +47,9 @@ export function setupNavbar() {
   const themeToggleBtn = document.getElementById('theme-toggle-btn')
   const themeToggleIcon = document.getElementById('theme-toggle-icon')
   const themes = ['light', 'dark', 'system']
-  let currentThemeIndex = 0
-
-  const savedTheme = localStorage.getItem('theme')
-  if (savedTheme && themes.includes(savedTheme)) {
-    currentThemeIndex = themes.indexOf(savedTheme)
-  } else {
-    currentThemeIndex = themes.indexOf('system')
-  }
+  
+  const savedTheme = getStorage('theme', 'system')
+  let currentThemeIndex = themes.includes(savedTheme) ? themes.indexOf(savedTheme) : themes.indexOf('system')
 
   function applyTheme(theme) {
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -86,9 +82,10 @@ export function setupNavbar() {
     themeToggleBtn.addEventListener('click', () => {
       currentThemeIndex = (currentThemeIndex + 1) % themes.length
       const nextTheme = themes[currentThemeIndex]
-      localStorage.setItem('theme', nextTheme)
+      setStorage('theme', nextTheme)
       applyTheme(nextTheme)
     })
   }
 }
+
 

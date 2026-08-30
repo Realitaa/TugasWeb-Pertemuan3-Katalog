@@ -1,11 +1,9 @@
 import productsData from '../data/products.json'
 import { renderPagination } from './pagination.js'
 import starIcon from './assets/star.svg?raw'
+import { formatRupiah, calculateOriginalPrice, createFilledStarIcon } from './utils.js'
 
-// Mengubah fill default svg menjadi filled (fill="currentColor") dengan styling amber/yellow
-const filledStarIcon = starIcon
-  .replace('fill="none"', 'fill="currentColor"')
-  .replace('class="lucide lucide-star-icon lucide-star"', 'class="size-3.5 fill-amber-400 text-amber-400 shrink-0"')
+const filledStarIcon = createFilledStarIcon(starIcon)
 
 export function setupProducts() {
   const productContainer = document.getElementById('product-list')
@@ -24,13 +22,9 @@ export function setupProducts() {
     const paginatedProducts = productsData.slice(startIndex, startIndex + itemsPerPage)
 
     productContainer.innerHTML = paginatedProducts.map(product => {
-      // Hitung harga asli sebelum diskon jika diskon > 0
-      const originalPrice = product.discountPercentage > 0 
-        ? Math.round(product.price / (1 - product.discountPercentage / 100))
-        : null
-
-      const formattedPrice = `Rp ${Number(product.price).toLocaleString('id-ID')}`
-      const formattedOriginalPrice = originalPrice ? `Rp ${Number(originalPrice).toLocaleString('id-ID')}` : ''
+      const originalPrice = calculateOriginalPrice(product.price, product.discountPercentage)
+      const formattedPrice = formatRupiah(product.price)
+      const formattedOriginalPrice = originalPrice ? formatRupiah(originalPrice) : ''
 
       return `
         <div class="flex flex-col bg-surface border border-border shadow-2xs rounded-xl overflow-hidden transition-transform duration-200 hover:-translate-y-1">
@@ -44,13 +38,13 @@ export function setupProducts() {
           </div>
           <div class="p-4 flex flex-col flex-1">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="text-xs text-muted font-medium flex items-center gap-1">
+              <span class="text-xs font-medium flex items-center gap-1">
                 ${filledStarIcon}
                 <span>${product.rating}</span>
               </span>
               <div class="text-right">
                 ${originalPrice ? `<span class="text-xs text-muted line-through mr-1">${formattedOriginalPrice}</span>` : ''}
-                <span class="text-base font-bold text-brand">${formattedPrice}</span>
+                <span class="text-base font-bold">${formattedPrice}</span>
               </div>
             </div>
             <h3 class="font-semibold text-primary line-clamp-1 text-base" title="${product.title}">
