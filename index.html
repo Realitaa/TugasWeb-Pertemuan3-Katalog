@@ -37,7 +37,17 @@
     </header>
     <main class="mx-auto px-4 max-w-340 pt-10 pb-20">
       <h1 class="text-4xl font-bold text-primary">Selamat Datang, <span init-name></span></h1>
-      <p class="text-lg text-muted mt-2">Mau belanja apa hari ini? Silahkan lihat katalog belanja kami.</p>
+      <p class="text-lg text-muted mb-4">Mau belanja apa hari ini? Silahkan lihat katalog belanja kami.</p>
+
+      <section id="product-list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      </section>
+
+      <!-- Pagination -->
+      <div class="mt-10 flex justify-center">
+        <nav id="pagination-container" class="flex items-center -space-x-px" aria-label="Pagination">
+        </nav>
+      </div>
+      <!-- End Pagination -->
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>

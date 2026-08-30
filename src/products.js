@@ -1,0 +1,84 @@
+import productsData from '../data/products.json'
+import { renderPagination } from './pagination.js'
+import starIcon from './assets/star.svg?raw'
+
+// Mengubah fill default svg menjadi filled (fill="currentColor") dengan styling amber/yellow
+const filledStarIcon = starIcon
+  .replace('fill="none"', 'fill="currentColor"')
+  .replace('class="lucide lucide-star-icon lucide-star"', 'class="size-3.5 fill-amber-400 text-amber-400 shrink-0"')
+
+export function setupProducts() {
+  const productContainer = document.getElementById('product-list')
+  const paginationContainer = document.getElementById('pagination-container')
+
+  if (!productContainer) return
+
+  const itemsPerPage = 8
+  let currentPage = 1
+  const totalProducts = productsData.length
+  const totalPages = Math.ceil(totalProducts / itemsPerPage)
+
+  function displayProducts(page) {
+    currentPage = page
+    const startIndex = (page - 1) * itemsPerPage
+    const paginatedProducts = productsData.slice(startIndex, startIndex + itemsPerPage)
+
+    productContainer.innerHTML = paginatedProducts.map(product => {
+      // Hitung harga asli sebelum diskon jika diskon > 0
+      const originalPrice = product.discountPercentage > 0 
+        ? (product.price / (1 - product.discountPercentage / 100)).toFixed(2)
+        : null
+
+      return `
+        <div class="flex flex-col bg-surface border border-border shadow-2xs rounded-xl overflow-hidden transition-transform duration-200 hover:-translate-y-1">
+          <div class="relative w-full pt-[75%] bg-surface/50 overflow-hidden">
+            <img class="absolute inset-0 w-full h-full object-contain p-4" src="${product.thumbnail}" alt="${product.title}" loading="lazy">
+            ${product.discountPercentage > 0 ? `
+              <span class="absolute top-3 right-3 bg-brand text-white text-xs font-bold px-2 py-1 rounded-md shadow-xs">
+                -${Math.round(product.discountPercentage)}%
+              </span>
+            ` : ''}
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-xs text-muted font-medium flex items-center gap-1">
+                ${filledStarIcon}
+                <span>${product.rating}</span>
+              </span>
+              <div class="text-right">
+                ${originalPrice ? `<span class="text-xs text-muted line-through mr-1">$${originalPrice}</span>` : ''}
+                <span class="text-base font-bold text-brand">$${product.price}</span>
+              </div>
+            </div>
+            <h3 class="font-semibold text-primary line-clamp-1 text-base" title="${product.title}">
+              ${product.title}
+            </h3>
+            <p class="mt-1 text-sm text-muted line-clamp-2 flex-1">
+              ${product.description}
+            </p>
+            <a class="mt-4 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-brand text-white hover:bg-brand-hover focus:outline-hidden transition-colors" href="#">
+              Beli Sekarang
+            </a>
+          </div>
+        </div>
+      `
+    }).join('')
+
+    // Render pagination
+    if (paginationContainer) {
+      renderPagination({
+        container: paginationContainer,
+        currentPage,
+        totalPages,
+        onPageChange: (newPage) => {
+          displayProducts(newPage)
+          // Scroll halus ke atas daftar produk
+          productContainer.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      })
+    }
+  }
+
+  // Initial render
+  displayProducts(1)
+}
