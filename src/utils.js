@@ -82,3 +82,15 @@ export function getTimeStatus(date = new Date()) {
   if (hour >= 15 && hour < 18) return 'Sore'
   return 'Malam'
 }
+
+/**
+ * Melakukan scroll halus ke elemen target
+ * @param {Element|string} target - Elemen DOM atau selector string
+ * @param {ScrollLogicalPosition} [block='start'] - Posisi perataan vertikal
+ */
+export function scrollToElement(target, block = 'start') {
+  const element = typeof target === 'string' ? document.querySelector(target) : target
+  if (element && typeof element.scrollIntoView === 'function') {
+    element.scrollIntoView({ behavior: 'smooth', block })
+  }
+}

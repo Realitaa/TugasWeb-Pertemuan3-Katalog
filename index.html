@@ -7,7 +7,7 @@
     <title>Katalog Produk Responsif</title>
   </head>
   <body class="bg-canvas text-primary transition-colors duration-200">
-    <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-surface border-b border-border transition-color duration-500">
+    <header class="sticky top-0 z-50 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-surface/95 backdrop-blur-sm border-b border-border transition-colors duration-500">
       <nav class="max-w-340 w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
         <div class="flex items-center justify-between">
           <a class="flex-none text-xl font-semibold text-primary focus:outline-hidden focus:opacity-80" href="/" aria-label="Brand">
@@ -39,15 +39,88 @@
       <h1 class="text-4xl font-bold text-primary">Selamat Datang, <span init-name></span></h1>
       <p class="text-lg text-muted mb-4">Mau belanja apa hari ini? Silahkan lihat katalog belanja kami.</p>
 
-      <section id="product-list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <!-- Product List -->
+      <section id="product" class="scroll-mt-20">
+        <div id="product-list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-10 flex justify-center">
+          <nav id="pagination-container" class="flex items-center -space-x-px" aria-label="Pagination">
+          </nav>
+        </div>
       </section>
 
-      <!-- Pagination -->
-      <div class="mt-10 flex justify-center">
-        <nav id="pagination-container" class="flex items-center -space-x-px" aria-label="Pagination">
-        </nav>
-      </div>
-      <!-- End Pagination -->
+      <!-- About Section -->
+      <section id="about" class="mt-24 pt-10 border-t border-border scroll-mt-20">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold text-primary sm:text-3xl">Tentang RealCommerce</h2>
+          <p class="mt-3 text-muted leading-relaxed">
+            RealCommerce adalah platform katalog produk modern yang dirancang untuk memberikan pengalaman eksplorasi belanja yang cepat, responsif, dan nyaman. Dibangun dengan teknologi web modern menggunakan <strong>Tailwind CSS v4</strong> dan <strong>Vite</strong>, website ini mendukung penyesuaian tema terang/gelap serta terintegrasi langsung dengan pemesanan melalui WhatsApp.
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="mt-24 pt-10 border-t border-border scroll-mt-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div>
+            <h2 class="text-2xl font-bold text-primary sm:text-3xl">Hubungi Kami</h2>
+            <p class="mt-3 text-muted leading-relaxed">
+              Punya pertanyaan mengenai produk atau membutuhkan bantuan seputar pemesanan? Jangan ragu untuk menghubungi kami.
+            </p>
+
+            <div class="mt-6 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
+                  📍
+                </span>
+                <div>
+                  <h4 class="text-sm font-semibold text-primary">Lokasi</h4>
+                  <p class="text-sm text-muted">Indonesia</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
+                  📞
+                </span>
+                <div>
+                  <h4 class="text-sm font-semibold text-primary">WhatsApp / Kontak</h4>
+                  <p class="text-sm text-muted" init-phone>+62 888-0767-3506</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
+                  👤
+                </span>
+                <div>
+                  <h4 class="text-sm font-semibold text-primary">Admin Pengelola</h4>
+                  <p class="text-sm text-muted" init-fullname>Reza Mulia Putra</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl bg-surface border border-border">
+            <h3 class="text-lg font-semibold text-primary mb-4">Kirim Pesan Cepat</h3>
+            <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah diterima.');" class="space-y-4">
+              <div>
+                <label for="contact-name" class="block text-sm font-medium text-primary mb-1">Nama Anda</label>
+                <input type="text" id="contact-name" required class="w-full px-3 py-2 text-sm rounded-lg bg-canvas border border-border text-primary placeholder:text-muted focus:outline-hidden focus:ring-1 focus:ring-ring" placeholder="Masukkan nama Anda">
+              </div>
+              <div>
+                <label for="contact-message" class="block text-sm font-medium text-primary mb-1">Pesan</label>
+                <textarea id="contact-message" rows="4" required class="w-full px-3 py-2 text-sm rounded-lg bg-canvas border border-border text-primary placeholder:text-muted focus:outline-hidden focus:ring-1 focus:ring-ring" placeholder="Tuliskan pertanyaan atau kebutuhan Anda..."></textarea>
+              </div>
+              <button type="submit" class="w-full py-2.5 px-4 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-brand text-white hover:bg-brand-hover focus:outline-hidden transition-colors cursor-pointer">
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>

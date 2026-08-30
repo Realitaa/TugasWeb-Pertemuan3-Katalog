@@ -2,6 +2,10 @@
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --canvas: var(--color-lime-50);
   --surface: var(--color-lime-50);

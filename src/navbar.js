@@ -2,12 +2,12 @@ import menuIcon from './assets/menu.svg?raw'
 import sunIcon from './assets/sun.svg?raw'
 import moonIcon from './assets/moon.svg?raw'
 import systemIcon from './assets/system.svg?raw'
-import { getStorage, setStorage } from './utils.js'
+import { getStorage, setStorage, scrollToElement } from './utils.js'
 
 export const navLinks = [
-  { label: 'Produk', href: '/', active: true },
-  { label: 'Tentang', href: '#' },
-  { label: 'Kontak', href: '#' },
+  { label: 'Produk', href: '#product' },
+  { label: 'Tentang', href: '#about' },
+  { label: 'Kontak', href: '#contact' },
 ]
 
 export function setupNavbar() {
@@ -20,14 +20,65 @@ export function setupNavbar() {
     iconContainer.innerHTML = menuIcon
   }
 
+  // Helper untuk mengubah style link aktif / inaktif
+  function setActiveLink(activeHref) {
+    if (!navList) return
+    navList.querySelectorAll('a[href^="#"]').forEach(a => {
+      const isCurrent = a.getAttribute('href') === activeHref
+      if (isCurrent) {
+        a.className = 'focus:outline-hidden cursor-pointer'
+        a.setAttribute('aria-current', 'page')
+      } else {
+        a.className = 'text-sm text-muted hover:text-brand-hover focus:outline-hidden cursor-pointer'
+        a.removeAttribute('aria-current')
+      }
+    })
+  }
+
   if (navList) {
-    navList.innerHTML = navLinks.map(link => {
-      const activeClass = link.active 
-        ? 'focus:outline-hidden'
-        : 'text-sm text-muted hover:text-brand-hover focus:outline-hidden'
-      const ariaCurrent = link.active ? 'aria-current="page"' : ''
+    navList.innerHTML = navLinks.map((link, idx) => {
+      const activeClass = idx === 0 
+        ? 'focus:outline-hidden cursor-pointer'
+        : 'text-sm text-muted hover:text-brand-hover focus:outline-hidden cursor-pointer'
+      const ariaCurrent = idx === 0 ? 'aria-current="page"' : ''
       return `<li><a class="${activeClass}" href="${link.href}" ${ariaCurrent}>${link.label}</a></li>`
     }).join('')
+
+    navList.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href')
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault()
+          setActiveLink(targetId)
+          scrollToElement(targetId)
+
+          if (navCollapse && !navCollapse.classList.contains('hidden')) {
+            navCollapse.classList.add('hidden')
+            toggleBtn?.setAttribute('aria-expanded', 'false')
+          }
+        }
+      })
+    })
+
+    // IntersectionObserver untuk mendeteksi perubahan section yang sedang dilihat user
+    const sectionIds = navLinks.map(l => l.href.replace('#', ''))
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean)
+
+    if ('IntersectionObserver' in window && sections.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveLink(`#${entry.target.id}`)
+          }
+        })
+      }, {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      })
+
+      sections.forEach(sec => observer.observe(sec))
+    }
   }
 
   if (toggleBtn && navCollapse) {
@@ -87,5 +138,3 @@ export function setupNavbar() {
     })
   }
 }
-
-

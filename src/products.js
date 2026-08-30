@@ -1,8 +1,9 @@
 import productsData from '../data/products.json'
 import { renderPagination } from './pagination.js'
 import starIcon from './assets/star.svg?raw'
-import { formatRupiah, calculateOriginalPrice, getTimeStatus } from './utils.js'
+import { formatRupiah, calculateOriginalPrice, getTimeStatus, scrollToElement } from './utils.js'
 import { fullname, phone } from './initVal.js'
+
 
 
 export function setupProducts() {
@@ -71,8 +72,7 @@ export function setupProducts() {
         totalPages,
         onPageChange: (newPage) => {
           displayProducts(newPage)
-          // Scroll halus ke atas daftar produk
-          productContainer.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          scrollToElement('#product')
         }
       })
     }
