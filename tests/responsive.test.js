@@ -6,7 +6,9 @@ import { setupProducts } from '../src/products.js'
 describe('Tailwind CSS Responsive Utility Classes & Structure', () => {
   beforeEach(() => {
     const htmlPath = path.resolve(__dirname, '../index.html')
-    const html = fs.readFileSync(htmlPath, 'utf-8')
+    let html = fs.readFileSync(htmlPath, 'utf-8')
+    // Hapus tag link remote saat unit testing agar happy-dom tidak melakukan fetch jaringan
+    html = html.replace(/<link\b[^>]*>/gi, '')
     document.documentElement.innerHTML = html
   })
 
