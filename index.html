@@ -15,7 +15,9 @@
           </a>
           <div class="sm:hidden">
             <button type="button" class="relative size-9 flex justify-center items-center gap-x-2 rounded-lg border border-border text-primary shadow-2xs hover:bg-hover focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none" id="hs-navbar-example-collapse" aria-expanded="false" aria-controls="hs-navbar-example" aria-label="Toggle navigation">
-              <span id="navbar-toggle-icon" class="shrink-0 size-4 flex items-center justify-center"></span>
+              <span id="navbar-toggle-icon" class="shrink-0 size-4 flex items-center justify-center">
+                <i data-lucide="menu" class="size-4 shrink-0"></i>
+              </span>
               <span class="sr-only">Tampilkan Navigasi</span>
             </button>
           </div>
@@ -63,61 +65,42 @@
 
       <!-- Contact Section -->
       <section id="contact" class="mt-24 pt-10 border-t border-border scroll-mt-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <h2 class="text-2xl font-bold text-primary sm:text-3xl">Hubungi Kami</h2>
-            <p class="mt-3 text-muted leading-relaxed">
-              Punya pertanyaan mengenai produk atau membutuhkan bantuan seputar pemesanan? Jangan ragu untuk menghubungi kami.
-            </p>
+        <div>
+          <h2 class="text-2xl font-bold text-primary sm:text-3xl">Hubungi Kami</h2>
+          <p class="mt-3 text-muted leading-relaxed">
+            Punya pertanyaan mengenai produk atau membutuhkan bantuan seputar pemesanan? Jangan ragu untuk menghubungi kami.
+          </p>
 
-            <div class="mt-6 space-y-4">
-              <div class="flex items-center gap-3">
-                <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
-                  📍
-                </span>
-                <div>
-                  <h4 class="text-sm font-semibold text-primary">Lokasi</h4>
-                  <p class="text-sm text-muted">Indonesia</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-3">
-                <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
-                  📞
-                </span>
-                <div>
-                  <h4 class="text-sm font-semibold text-primary">WhatsApp / Kontak</h4>
-                  <p class="text-sm text-muted" init-phone>+62 888-0767-3506</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-3">
-                <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
-                  👤
-                </span>
-                <div>
-                  <h4 class="text-sm font-semibold text-primary">Admin Pengelola</h4>
-                  <p class="text-sm text-muted" init-fullname>Reza Mulia Putra</p>
-                </div>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
+                <i data-lucide="map-pin" class="size-5"></i>
+              </span>
+              <div>
+                <h4 class="text-sm font-semibold text-primary">Lokasi</h4>
+                <p class="text-sm text-muted" init-location>Indonesia</p>
               </div>
             </div>
-          </div>
 
-          <div class="p-6 rounded-xl bg-surface border border-border">
-            <h3 class="text-lg font-semibold text-primary mb-4">Kirim Pesan Cepat</h3>
-            <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah diterima.');" class="space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
+                <i data-lucide="phone" class="size-5"></i>
+              </span>
               <div>
-                <label for="contact-name" class="block text-sm font-medium text-primary mb-1">Nama Anda</label>
-                <input type="text" id="contact-name" required class="w-full px-3 py-2 text-sm rounded-lg bg-canvas border border-border text-primary placeholder:text-muted focus:outline-hidden focus:ring-1 focus:ring-ring" placeholder="Masukkan nama Anda">
+                <h4 class="text-sm font-semibold text-primary">WhatsApp / Kontak</h4>
+                <p class="text-sm text-muted" init-phone>+62 888-0767-3506</p>
               </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="size-10 flex items-center justify-center rounded-lg bg-surface border border-border text-primary">
+                <i data-lucide="user" class="size-5"></i>
+              </span>
               <div>
-                <label for="contact-message" class="block text-sm font-medium text-primary mb-1">Pesan</label>
-                <textarea id="contact-message" rows="4" required class="w-full px-3 py-2 text-sm rounded-lg bg-canvas border border-border text-primary placeholder:text-muted focus:outline-hidden focus:ring-1 focus:ring-ring" placeholder="Tuliskan pertanyaan atau kebutuhan Anda..."></textarea>
+                <h4 class="text-sm font-semibold text-primary">Admin Pengelola</h4>
+                <p class="text-sm text-muted" init-fullname>Reza Mulia Putra</p>
               </div>
-              <button type="submit" class="w-full py-2.5 px-4 inline-flex justify-center items-center text-sm font-medium rounded-lg bg-brand text-white hover:bg-brand-hover focus:outline-hidden transition-colors cursor-pointer">
-                Kirim Pesan
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </section>

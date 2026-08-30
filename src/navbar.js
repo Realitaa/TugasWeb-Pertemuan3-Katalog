@@ -1,7 +1,3 @@
-import menuIcon from './assets/menu.svg?raw'
-import sunIcon from './assets/sun.svg?raw'
-import moonIcon from './assets/moon.svg?raw'
-import systemIcon from './assets/system.svg?raw'
 import { getStorage, setStorage, scrollToElement } from './utils.js'
 
 export const navLinks = [
@@ -13,12 +9,7 @@ export const navLinks = [
 export function setupNavbar() {
   const toggleBtn = document.getElementById('hs-navbar-example-collapse')
   const navCollapse = document.getElementById('hs-navbar-example')
-  const iconContainer = document.getElementById('navbar-toggle-icon')
   const navList = document.getElementById('navbar-list')
-
-  if (iconContainer) {
-    iconContainer.innerHTML = menuIcon
-  }
 
   // Helper untuk mengubah style link aktif / inaktif
   function setActiveLink(activeHref) {
@@ -112,11 +103,11 @@ export function setupNavbar() {
 
     if (themeToggleIcon) {
       if (theme === 'light') {
-        themeToggleIcon.innerHTML = sunIcon
+        themeToggleIcon.innerHTML = '<i data-lucide="sun" class="size-4"></i>'
       } else if (theme === 'dark') {
-        themeToggleIcon.innerHTML = moonIcon
+        themeToggleIcon.innerHTML = '<i data-lucide="moon" class="size-4"></i>'
       } else {
-        themeToggleIcon.innerHTML = systemIcon
+        themeToggleIcon.innerHTML = '<i data-lucide="laptop" class="size-4"></i>'
       }
     }
   }

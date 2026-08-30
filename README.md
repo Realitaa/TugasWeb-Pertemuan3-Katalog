@@ -1,6 +1,6 @@
 # RealCommerce - Katalog Produk Responsif
 
-> 🎓 **Tugas Kuliah**: Proyek pembuatan web Katalog Produk Responsif berbasis **Tailwind CSS v4** dan **Vanilla JavaScript (Vite)**.
+> 🎓 **Tugas Kuliah**: Proyek pembuatan web Katalog Produk Responsif berbasis **Tailwind CSS v4**.
 
 ---
 
@@ -56,14 +56,3 @@ Karena proyek ini merupakan Static Site Generator (SSG) berbasis Vite dan folder
 | **Build command** | `pnpm run build:full` *(atau `pnpm run build` jika data sudah di-commit)* |
 | **Build output directory** | `dist` |
 | **Root directory** | `/` |
-
-> 💡 **Catatan**: 
-> Menggunakan `pnpm run build:full` sebagai *Build command* memastikan Cloudflare Pages akan otomatis mengambil data terbaru dari DummyJSON, menerjemahkan deskripsi, mengonversi kurs IDR, dan mem-build asset web secara otomatis dalam satu kali proses deploy.
-
----
-
-## 🛠️ Evaluasi Dependencies
-
-Seluruh dependencies (`tailwindcss`, `@tailwindcss/vite`, `vite`, dan `@vitalets/google-translate-api`) telah dipindahkan ke **`devDependencies`**. Hal ini karena:
-- Proyek ini adalah web statis yang di-bundle saat build time oleh Vite menjadi HTML, CSS, dan JS murni di folder `dist/`.
-- Script scraping dan translate hanya dieksekusi saat proses build atau preprocessing di Node.js, tidak dijalankan di runtime browser klien.

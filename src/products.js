@@ -1,10 +1,7 @@
 import productsData from '../data/products.json'
 import { renderPagination } from './pagination.js'
-import starIcon from './assets/star.svg?raw'
 import { formatRupiah, calculateOriginalPrice, getTimeStatus, scrollToElement } from './utils.js'
 import { fullname, phone } from './initVal.js'
-
-
 
 export function setupProducts() {
   const productContainer = document.getElementById('product-list')
@@ -42,7 +39,7 @@ export function setupProducts() {
           <div class="p-4 flex flex-col flex-1">
             <div class="flex items-center justify-between gap-2 mb-1">
               <span class="text-xs font-medium flex items-center gap-1">
-                ${starIcon}
+                <i data-lucide="star" class="size-3.5 fill-amber-400 text-amber-400 shrink-0"></i>
                 <span>${product.rating}</span>
               </span>
               <div class="text-right">
@@ -81,3 +78,5 @@ export function setupProducts() {
   // Initial render
   displayProducts(1)
 }
+
+
