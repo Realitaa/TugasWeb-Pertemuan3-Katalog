@@ -1,6 +1,10 @@
 # RealCommerce - Katalog Produk Responsif
 
-> 🎓 **Tugas Kuliah**: Proyek pembuatan web Katalog Produk Responsif berbasis **Tailwind CSS v4**. Live di: https://realcommerce.realitaa.dev
+**Automated Checks:** ![Tests](https://github.com/Realitaa/TugasWeb-Pertemuan3-Katalog/actions/workflows/test.yml/badge.svg)
+
+> 🎓 **Tugas Kuliah**: Proyek pembuatan web Katalog Produk Responsif berbasis **Tailwind CSS v4**. 
+
+Website live: [realcommerce.realitaa.dev](https://realcommerce.realitaa.dev)
 
 ---
 

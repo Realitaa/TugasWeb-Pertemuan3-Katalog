@@ -19,7 +19,7 @@ async function convertCurrency() {
     const rate = rateData.rates?.IDR || rateData.rate || rateData.IDR
     
     if (!rate) {
-      throw new Error('Nilai tukar IDR tidak ditemukan dalam respons: ' + JSON.stringify(rateData))
+      throw newError('Nilai tukar IDR tidak ditemukan dalam respons: ' + JSON.stringify(rateData))
     }
 
     console.log(`💱 Kurs saat ini: 1 USD = Rp ${Number(rate).toLocaleString('id-ID')}`)
