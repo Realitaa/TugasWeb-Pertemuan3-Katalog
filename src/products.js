@@ -1,9 +1,9 @@
 import productsData from '../data/products.json'
 import { renderPagination } from './pagination.js'
 import starIcon from './assets/star.svg?raw'
-import { formatRupiah, calculateOriginalPrice, createFilledStarIcon } from './utils.js'
+import { formatRupiah, calculateOriginalPrice, getTimeStatus } from './utils.js'
+import { fullname, phone } from './initVal.js'
 
-const filledStarIcon = createFilledStarIcon(starIcon)
 
 export function setupProducts() {
   const productContainer = document.getElementById('product-list')
@@ -25,6 +25,8 @@ export function setupProducts() {
       const originalPrice = calculateOriginalPrice(product.price, product.discountPercentage)
       const formattedPrice = formatRupiah(product.price)
       const formattedOriginalPrice = originalPrice ? formatRupiah(originalPrice) : ''
+      const prefilledMessage = `Selamat ${getTimeStatus()}, ${fullname}. Saya ingin membeli produk ${product.title}. Apakah produk ini masih tersedia?`
+      const waLink = `https://wa.me/${phone}/?text=${encodeURIComponent(prefilledMessage)}`
 
       return `
         <div class="flex flex-col bg-surface border border-border shadow-2xs rounded-xl overflow-hidden transition-transform duration-200 hover:-translate-y-1">
@@ -39,7 +41,7 @@ export function setupProducts() {
           <div class="p-4 flex flex-col flex-1">
             <div class="flex items-center justify-between gap-2 mb-1">
               <span class="text-xs font-medium flex items-center gap-1">
-                ${filledStarIcon}
+                ${starIcon}
                 <span>${product.rating}</span>
               </span>
               <div class="text-right">
@@ -53,7 +55,7 @@ export function setupProducts() {
             <p class="mt-1 text-sm text-muted line-clamp-2 flex-1">
               ${product.description}
             </p>
-            <a class="mt-4 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-brand text-white hover:bg-brand-hover focus:outline-hidden transition-colors" href="#">
+            <a class="mt-4 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-brand text-white hover:bg-brand-hover focus:outline-hidden transition-colors" href="${waLink}" target="_blank">
               Beli Sekarang
             </a>
           </div>

@@ -1,12 +1,12 @@
 /**
  * utils.js
- * Kumpulan fungsi utilitas yang digunakan di seluruh aplikasi
+ * Kumpulan fungsi utilitas murni (pure functions) yang digunakan di seluruh aplikasi
  */
 
 /**
- * Mengambil item dari localStorage dengan nilai default fallback jika tidak ditemukan
+ * Mengambil item dari localStorage dengan nilai default fallback
  * @param {string} key - Kunci localStorage
- * @param {*} defaultValue - Nilai default jika key tidak ditemukan atau terjadi error
+ * @param {*} defaultValue - Nilai default jika key tidak ditemukan atau error
  * @returns {*}
  */
 export function getStorage(key, defaultValue = null) {
@@ -54,22 +54,31 @@ export function calculateOriginalPrice(price, discountPercentage) {
 }
 
 /**
- * Memodifikasi string SVG bintang agar terisi warna kuning (filled amber)
- * @param {string} rawSvg - Konten raw SVG
- * @returns {string} SVG yang telah disesuaikan styling class & fill-nya
- */
-export function createFilledStarIcon(rawSvg) {
-  return rawSvg
-    .replace('fill="none"', 'fill="currentColor"')
-    .replace('class="lucide lucide-star-icon lucide-star"', 'class="size-3.5 fill-amber-400 text-amber-400 shrink-0"')
-}
-
-/**
  * Mengatur teks elemen berdasarkan atribut [init-name]
  * @param {string} name - Nama yang ingin ditampilkan
  */
-export function initDisplayName(name = 'Reza') {
+export function initDisplayName(name = 'Nama') {
   document.querySelectorAll('[init-name]').forEach(el => {
     el.textContent = name
   })
+}
+
+/**
+ * Mendapatkan status waktu saat ini dalam Bahasa Indonesia berdasarkan jam WIB (Asia/Jakarta)
+ * @param {Date} [date=new Date()] - Objek Date (default: saat ini)
+ * @returns {string} 'Pagi' | 'Siang' | 'Sore' | 'Malam'
+ */
+export function getTimeStatus(date = new Date()) {
+  const hour = Number(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Jakarta',
+      hour: 'numeric',
+      hour12: false,
+    }).format(date)
+  )
+
+  if (hour >= 5 && hour < 11) return 'Pagi'
+  if (hour >= 11 && hour < 15) return 'Siang'
+  if (hour >= 15 && hour < 18) return 'Sore'
+  return 'Malam'
 }
