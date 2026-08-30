@@ -23,8 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# Data folder ignored
-data/
+# Data folder (ignore raw data/processing files, track only production products.json)
+data/*
+!data/products.json
+
 
 # Testing artifacts (keep screenshots, ignore temp traces/reports)
 test-results/

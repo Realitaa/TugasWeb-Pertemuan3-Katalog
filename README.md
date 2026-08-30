@@ -62,7 +62,7 @@ Buka browser pada alamat `http://localhost:5173`.
 | `pnpm run fetch:data` | Mengambil seluruh data mentah dari DummyJSON ke `data/products-raw.json` |
 | `pnpm run process:data` | Menjalankan translasi deskripsi & konversi kurs USD $\rightarrow$ IDR |
 | `pnpm run pipeline` | Menjalankan proses fetch dan processing data secara berurutan |
-| `pnpm run build` | Melakukan build aplikasi ke folder `dist/` |
+| `pnpm run build` | Melakukan build aplikasi ke folder `dist/` *(Menggunakan `data/products.json`)* |
 | `pnpm run build:full` | **Perintah All-in-One**: Menjalankan fetch data + processing + build Vite |
 | `pnpm run test` | Menjalankan Unit Testing struktur DOM & utility Tailwind (Vitest) |
 | `pnpm run test:e2e` | Menjalankan E2E testing & screenshot multi-breakpoint (Playwright) |
