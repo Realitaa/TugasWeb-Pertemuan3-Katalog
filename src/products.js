@@ -26,8 +26,11 @@ export function setupProducts() {
     productContainer.innerHTML = paginatedProducts.map(product => {
       // Hitung harga asli sebelum diskon jika diskon > 0
       const originalPrice = product.discountPercentage > 0 
-        ? (product.price / (1 - product.discountPercentage / 100)).toFixed(2)
+        ? Math.round(product.price / (1 - product.discountPercentage / 100))
         : null
+
+      const formattedPrice = `Rp ${Number(product.price).toLocaleString('id-ID')}`
+      const formattedOriginalPrice = originalPrice ? `Rp ${Number(originalPrice).toLocaleString('id-ID')}` : ''
 
       return `
         <div class="flex flex-col bg-surface border border-border shadow-2xs rounded-xl overflow-hidden transition-transform duration-200 hover:-translate-y-1">
@@ -46,8 +49,8 @@ export function setupProducts() {
                 <span>${product.rating}</span>
               </span>
               <div class="text-right">
-                ${originalPrice ? `<span class="text-xs text-muted line-through mr-1">$${originalPrice}</span>` : ''}
-                <span class="text-base font-bold text-brand">$${product.price}</span>
+                ${originalPrice ? `<span class="text-xs text-muted line-through mr-1">${formattedOriginalPrice}</span>` : ''}
+                <span class="text-base font-bold text-brand">${formattedPrice}</span>
               </div>
             </div>
             <h3 class="font-semibold text-primary line-clamp-1 text-base" title="${product.title}">

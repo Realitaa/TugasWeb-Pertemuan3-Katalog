@@ -40,7 +40,7 @@ async function fetchProducts() {
     const outputDir = path.resolve(__dirname, '../data')
     await fs.mkdir(outputDir, { recursive: true })
 
-    const outputPath = path.join(outputDir, 'products.json')
+    const outputPath = path.join(outputDir, 'products-raw.json')
     await fs.writeFile(outputPath, JSON.stringify(allProducts, null, 2), 'utf-8')
 
     console.log(`✅ Berhasil mengambil seluruh data! Total: ${allProducts.length} produk tersimpan di ${outputPath}`)
