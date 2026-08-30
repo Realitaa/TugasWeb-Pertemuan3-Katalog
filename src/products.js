@@ -27,7 +27,7 @@ export function setupProducts() {
       const waLink = `https://wa.me/${phone}/?text=${encodeURIComponent(prefilledMessage)}`
 
       return `
-        <div class="flex flex-col bg-surface border border-border shadow-2xs rounded-xl overflow-hidden transition-transform duration-200 hover:-translate-y-1">
+        <article class="flex flex-col bg-surface border border-border shadow-2xs rounded-xl overflow-hidden transition-transform duration-200 hover:-translate-y-1">
           <div class="relative w-full pt-[75%] bg-surface/50 overflow-hidden">
             <img class="absolute inset-0 w-full h-full object-contain p-4" src="${product.thumbnail}" alt="${product.title}" loading="lazy">
             ${product.discountPercentage > 0 ? `
@@ -57,7 +57,7 @@ export function setupProducts() {
               Beli Sekarang
             </a>
           </div>
-        </div>
+        </article>
       `
     }).join('')
 

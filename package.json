@@ -10,13 +10,19 @@
     "fetch:data": "node scripts/fetch-products.js",
     "process:data": "node scripts/translate-products.js && node scripts/convert-currency.js",
     "pipeline": "pnpm run fetch:data && pnpm run process:data",
-    "build:full": "pnpm run pipeline && pnpm run build"
+    "build:full": "pnpm run pipeline && pnpm run build",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:all": "pnpm run test && pnpm run test:e2e"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/vite": "^4.3.3",
     "@vitalets/google-translate-api": "^9.2.1",
+    "happy-dom": "^20.12.0",
     "lucide": "^1.37.0",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   }
 }

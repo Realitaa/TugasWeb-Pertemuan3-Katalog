@@ -25,3 +25,9 @@ dist-ssr
 
 # Data folder ignored
 data/
+
+# Testing artifacts (keep screenshots, ignore temp traces/reports)
+test-results/
+playwright-report/
+blob-report/
+.nyc_output/

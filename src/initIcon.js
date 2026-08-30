@@ -14,7 +14,8 @@ import {
   ChevronRight, 
   MapPin, 
   Phone, 
-  User 
+  User,
+  Copyright
 } from 'lucide'
 
 const appIcons = {
@@ -28,6 +29,7 @@ const appIcons = {
   MapPin,
   Phone,
   User,
+  Copyright
 }
 
 /**
